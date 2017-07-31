@@ -1,7 +1,8 @@
 L.Control.Messagebox = L.Control.extend({
     options: {
         position: 'topright',
-        timeout: 3000
+        timeout: 3000,
+        type: undefined //additional class for different styling (leaflet-control-messagebox-TYPE)
     },
 
     onAdd: function (map) {
@@ -13,6 +14,13 @@ L.Control.Messagebox = L.Control.extend({
     show: function (message, timeout) {
         var elem = this._container;
         elem.innerHTML = message;
+        
+        if (this.options.type != undefined) {
+            elem.className='leaflet-control leaflet-control-messagebox' + " leaflet-control-messagebox-" + this.options.type
+        }
+        else { 
+            elem.className='leaflet-control leaflet-control-messagebox';
+        }
         elem.style.display = 'block';
 
         timeout = timeout || this.options.timeout;
@@ -23,6 +31,17 @@ L.Control.Messagebox = L.Control.extend({
         this.timeoutID = setTimeout(function () {
             elem.style.display = 'none';
         }, timeout);
+    },
+    
+    set_type: function (type) {
+        this.options.type = type;
+    },
+    
+    show_as: function(type,message) { 
+        old_type=this.options.type;
+        this.set_type(type);
+        this.show(message);
+        this.set_type(old_type);
     }
 });
 

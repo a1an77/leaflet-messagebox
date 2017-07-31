@@ -4,3 +4,15 @@
 	background-color: white;
 	padding: 3px 10px;
 }
+
+.leaflet-control-messagebox-info {
+        border-color: darkgray;
+}
+
+.leaflet-control-messagebox-warn {
+        border-color: orange;
+}
+
+.leaflet-control-messagebox-error {
+        border-color: red;
+}
