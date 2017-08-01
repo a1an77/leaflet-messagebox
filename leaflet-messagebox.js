@@ -6,7 +6,7 @@ L.Control.Messagebox = L.Control.extend({
     },
 
     onAdd: function (map) {
-        this._container = L.DomUtil.create('div', 'leaflet-control-messagebox');
+        this._container = L.DomUtil.create('div', 'leaflet-ber leaflet-control-messagebox');
         //L.DomEvent.disableClickPropagation(this._container);
         return this._container;
     },
@@ -16,10 +16,10 @@ L.Control.Messagebox = L.Control.extend({
         elem.innerHTML = message;
         
         if (this.options.type != undefined) {
-            elem.className='leaflet-control leaflet-control-messagebox' + " leaflet-control-messagebox-" + this.options.type
+            elem.className='leaflet-bar leaflet-control leaflet-control-messagebox' + " leaflet-control-messagebox-" + this.options.type
         }
         else { 
-            elem.className='leaflet-control leaflet-control-messagebox';
+            elem.className='leaflet-bar leaflet-control leaflet-control-messagebox';
         }
         elem.style.display = 'block';
 
